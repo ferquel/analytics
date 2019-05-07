@@ -1,0 +1,106 @@
+openapi: 3.0.0
+info:
+  title: Ferquel Analytics API
+  version: 0.0.1
+  contact:
+    name: Merlin Schumacher
+    email: merlin.schumacher@gmail.com
+security: []
+servers:
+  - url: ''
+    description: ''
+    variables: {}
+paths:
+  /link:
+    x-temp:
+      summary: ''
+      description: ''
+      parameters: []
+      operationId: ''
+      responses:
+        default:
+          description: Default response
+    post:
+      summary: Adding a link for a post
+      description: ''
+      parameters: []
+      operationId: addLink
+      responses:
+        '200':
+          description: Description
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: Default response
+          content:
+            application/json:
+              schema: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Link'
+        required: true
+    get:
+      summary: ''
+      description: ''
+      parameters: []
+      operationId: ''
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+        '404':
+          description: failed
+        '400':
+          description: invalid id
+  '/link/{id}':
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      operationId: getLinkById
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+        '404':
+          description: failed
+        '400':
+          description: invalid id
+components:
+  links: {}
+  callbacks: {}
+  schemas:
+    Link:
+      required:
+        '0': url
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        url:
+          type: string
+        shortlink:
+          type: string
+    Job:
+      type: object
+    Links:
+      type: array
+      items:
+        $ref: '#/components/schemas/Link'
+  securitySchemes: {}
+tags: []
