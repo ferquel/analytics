@@ -86,7 +86,7 @@ components:
   schemas:
     Link:
       required:
-        '0': url
+        - url
       type: object
       properties:
         id:
